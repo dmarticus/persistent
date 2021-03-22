@@ -184,6 +184,9 @@ instance NFData Exp where
 instance NFData Lit where
     rnf = genericRnf
 
+instance NFData Bytes where
+    rnf x = bytesOffset x `seq` bytesSize x `seq` bytesPtr x `seq` ()
+
 instance NFData OccName where
     rnf = genericRnf
 
